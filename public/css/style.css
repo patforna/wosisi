@@ -1,0 +1,86 @@
+html { 
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #333;
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;    
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+}      
+
+h1 {
+  font-size: 60px;
+  font-weight: bold;
+  letter-spacing: -0.05em;
+  color: #111;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+a:link {color:#FF5E99; text-decoration:none;}
+a:visited {color:#FF5E99; text-decoration:none;}
+a:hover {color:#FF5E99; text-decoration:underline;}
+a:active {color:#FF5E99; text-decoration:underline;}
+
+.social {
+  padding-top: 10px;
+  text-align: right;
+}
+
+.tweet {
+  width: 100%;	
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom:20px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.tweet li {
+  color: white;
+  font-size: 14px;
+  font-family: Menlo, Monaco, sans-serif;
+  line-height: 1.5;
+} 
+
+.tweet ul {
+  list-style-type: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 0px;
+}
+
+.tweet .title {
+  color: #73C5DD;
+}
+
+.tweet .detail {
+  color: #AAAAAA;
+}
+
+#map_canvas { 
+  width:100%;
+  height: 500px;
+}
+
+#graph {
+  width:100%; 
+  height:400px;
+  margin-top:30px;
+}
