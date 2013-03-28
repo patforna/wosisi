@@ -1,17 +1,14 @@
 <div class="container">
-	<h1>Wo si si?</h1>
-	<div class="tweet">
-		<ul>
-			<li class="last-tweet">
-				<span class="title">Last tweet:</span> <span class="value"><%= auto_link(@last_tweet.text) %></span> <span class="detail">| <%= ago_in_words(@last_tweet.created_at) %></span>
-			</li>
-			<li class="last-location">
-				<span class="title">Last known location:</span>
-				<span class="value"><%= @last_place.name %></span>
-				<span class="detail">| <span class="latitude"><%= @last_place.latitude %></span>, <span class="longitude"><%= @last_place.longitude %></span></span>
-				<span class="detail">| <%= ago_in_words(@last_place.visited_at) %></span>
-			</li>					
-		</ul>
-	</div>
-	<div id="map_canvas"></div>
+  <header>
+    <h1>Wo si si?</h1>
+  	<section id="last-tweet">
+  			<p class="tweet-text"><%= auto_link(@last_tweet.text) %></p>
+  			<p class="tweet-age"><%= ago_in_words(@last_tweet.created_at) %></p>
+  			<p class="tweet-location">TBD</p>
+  			<details>
+  			  <span class="latitude"><%= @last_place.latitude %></span>, <span class="longitude"><%= @last_place.longitude %></span>
+  			</details>
+  	</section>	
+	</header>
+	<section id="map_canvas"></section>
 </div>
