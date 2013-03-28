@@ -20,8 +20,8 @@ describe Route do
   
   describe "json serialisation" do
     it "should serialise fields to JSON" do      
-      oldest = Place.new(1.1, 1.2, Time.now - 10)
-      newest = Place.new(2.1, 2.2, Time.now)
+      oldest = Place.new(1.1, 1.2, Time.now - 10, tweet("foo"))
+      newest = Place.new(2.1, 2.2, Time.now, tweet("bar"))
       route = Route.new [oldest, newest]            
       route.to_json.should be_json_eql(%({"places":[#{oldest.to_json}, #{newest.to_json}]}))
     end
