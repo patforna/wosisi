@@ -18,9 +18,7 @@ before do
 end
 
 get '/' do
-  puts "hello world"
   tweets = Tweet.load
-  puts tweets
   @last_tweet = tweets.first
   @route = Route.from(tweets)
   @last_place = @route.last_place

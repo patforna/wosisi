@@ -34,11 +34,6 @@ a:visited {color:#FF5E99; text-decoration:none;}
 a:hover {color:#FF5E99; text-decoration:underline;}
 a:active {color:#FF5E99; text-decoration:underline;}
 
-.social {
-  padding-top: 10px;
-  text-align: right;
-}
-
 .tweet {
   width: 100%;	
   background-color: black;
