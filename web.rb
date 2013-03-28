@@ -6,6 +6,7 @@ require './lib/route'
 require './lib/helpers'
 
 configure :production do
+  require 'newrelic_rpm'  
   require 'dalli'
   require 'rack-cache'  
   $cache = Dalli::Client.new
