@@ -19,5 +19,5 @@ end
 # helper methods
 require 'twitter'
 def tweet(message) 
-  Twitter::Status.new("text" => message)
+  Twitter::Tweet.new(:id => 0, :text => message)
 end

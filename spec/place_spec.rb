@@ -4,13 +4,13 @@ describe Place do
   
   describe "parse tweet" do
     it "should regognise latitude and longitude" do
-      tweet = Twitter::Status.new('geo' => {'type' => 'Point', "coordinates" => [13.2, -7.6]})
+      tweet = Twitter::Tweet.new(:id => 0, :geo => {:type => 'Point', :coordinates => [13.2, -7.6]})
       should_parse tweet, 13.2, -7.6
     end
     
     it "should regognise time when tweet was created" do
       time = Time.new(2012,4,10)
-      tweet = Twitter::Status.new('created_at' => time.to_s)
+      tweet = Twitter::Tweet.new(:id => 0, :created_at => time.to_s)
       Place.parse(tweet).visited_at.should == time
     end
     
@@ -19,7 +19,7 @@ describe Place do
       Place.parse(tweet).tweet == tweet
     end    
   end
-                                                
+                                            
   describe "parse tweet with no implicit geo data" do
     it "should recognise latitude and longitude" do 
       should_parse tweet("42.0123,8.9876"), 42.0123, 8.9876
@@ -65,7 +65,7 @@ describe Place do
       Geokit::Geocoders::GoogleGeocoder.should_receive(:reverse_geocode).and_return(geoLoc)
       Place.new(0, 0).name.should == "Bar, Baz"
     end    
-
+  
     it "should get rid of numbers in address components - at end" do
       geoLoc = double('geoLoc')
       geoLoc.should_receive(:full_address).and_return("11234 Bar, Baz")      
