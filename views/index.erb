@@ -2,16 +2,15 @@
   <header>
     <h1>Wo si si?</h1>
   	<section id="last-tweet">
-        <!-- <p class="tweet-text"><%= auto_link(@last_tweet.text) %></p> -->
-        <p class="tweet-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever sin</p>     
-  			<p class="tweet-age"><i class="icon-time"></i> <%= ago_in_words(@last_tweet.created_at) %></p>
-  			
-  			
-  			
-  			<p class="tweet-location"><i class="icon-map-marker"></i> Bangalore, India</p>
-  			<details>
-  			  <span class="latitude"><%= @last_place.latitude %></span>, <span class="longitude"><%= @last_place.longitude %></span>
-  			</details>
+        <p class="tweet-text"><%= auto_link(@last_tweet.text) %></p>
+        <div class="tweet-details">
+          <%if (!@last_place.unknown?) %>
+          <p class="tweet-location"><i class="icon-map-marker"></i> <%= @last_place.name %></p>
+          <% end%>
+    			<p class="tweet-age"><i class="icon-time"></i> <%= ago_in_words(@last_tweet.created_at) %></p>
+          <p class="latitude"><%= @last_place.latitude %></p>
+          <p class="longitude"><%= @last_place.longitude %></p>          
+        </div>
   	</section>	
 	</header>
 	<section id="map_canvas"></section>

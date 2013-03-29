@@ -22,7 +22,7 @@ get '/' do
   tweets = Tweet.load
   @last_tweet = tweets.first
   @route = Route.from(tweets)
-  @last_place = @route.last_place
+  @last_place = @route.last_place # FIXME
 
   erb :index
 end

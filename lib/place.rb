@@ -1,5 +1,5 @@
 require 'json'
-require 'geokit'
+require 'twitter'
 
 class Place
   LAT_LONG_PATTERN = /(^|(.* ))(-?\d+\.\d+),(-?\d+\.\d+)( .*|$)/
@@ -42,10 +42,9 @@ class Place
   private
   def compute_name
     begin
-      address = Geokit::Geocoders::GoogleGeocoder.reverse_geocode(GeoKit::LatLng.new(latitude, longitude)).full_address
-      parts = address.split(', ')
-      parts = parts.drop parts.length - 2 if parts.length > 2
-      parts = parts.map {|p| p.gsub(/\s?\d+\s?/, '') }
+      result = Twitter.reverse_geocode(:lat => latitude, :long => longitude, :granularity => "city", :max_results => 1).first
+      parts = [result.full_name]
+      parts << result.country if result.country?
       parts.join(', ')
     rescue
       UNKNOWN

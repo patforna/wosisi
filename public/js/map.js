@@ -1,6 +1,6 @@
 whereispat.map = function() {
 	
-  	var ROUTE_START_DATE = "2012-04-01 00:00:00 +0000"
+  	var ROUTE_START_DATE = "2013-03-01 00:00:00 +0000"
 	
     var SHOW_TWEETS_AT_ZOOM = 3;	
     var START_MARKER = new google.maps.MarkerImage('/img/green_marker.png', null, null, null, null);
