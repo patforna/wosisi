@@ -8,6 +8,7 @@
           <p class="tweet-location"><i class="icon-map-marker"></i> <%= @last_place.name %></p>
           <% end%>
     			<p class="tweet-age"><i class="icon-time"></i> <%= ago_in_words(@last_tweet.created_at) %></p>
+    			<p class="more-tweets"><i class="icon-twitter"></i> <a href="https://twitter.com/wosisi" target="_blank">more</a>&hellip;</p>
           <p class="latitude"><%= @last_place.latitude %></p>
           <p class="longitude"><%= @last_place.longitude %></p>          
         </div>

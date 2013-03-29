@@ -8,14 +8,6 @@ html, body {
   width: 100%;
 }
 
-a:link, a:visited {
-  color:#FF5E99; text-decoration:none;
-}
-
-a:hover, a:active {
-  color:#FF5E99; text-decoration:underline;
-}
-
 header {
   width: 100%;  
   height: 35px;
@@ -59,17 +51,31 @@ header #last-tweet {
 
 #last-tweet .tweet-location {
   float: left;
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
 #last-tweet .tweet-age {
   float: left;
-  margin-right: 5px;
+  margin-right: 8px;
 }
 
 #last-tweet .more-tweets {
-  float: right;
-  margin-right: 5px;
+  float: left;
+}
+
+.more-tweets a:link, a:visited {
+  color: gray;
+  text-decoration:none;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;  
+}
+
+.more-tweets a:hover, a:active {
+  color: #333333;
+  text-decoration:underline;
 }
 
 
