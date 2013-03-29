@@ -38,6 +38,11 @@ describe Place do
       should_parse tweet("  foo 42.0,7.0"), 42.0, 7.0     
     end
     
+    it "should cope with space after comma" do 
+      should_parse tweet("42.0, -7.0"), 42.0, -7.0
+    end
+    
+    
     it "should indicate place is !known/unknown if no geo data" do
       Place.parse(tweet("no geo data in here")).unknown?.should be_true
     end    

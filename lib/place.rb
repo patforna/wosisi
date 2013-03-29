@@ -2,7 +2,7 @@ require 'json'
 require 'twitter'
 
 class Place
-  LAT_LONG_PATTERN = / ?(-?\d+\.\d+),(-?\d+\.\d+)/
+  LAT_LONG_PATTERN = / ?(-?\d+\.\d+), ?(-?\d+\.\d+)/
   TWEET_WITH_LAT_LONG_PATTERN = /(^|(.* ))#{LAT_LONG_PATTERN}( .*|$)/  
   UNKNOWN = "Not sure the name of the place"
   
