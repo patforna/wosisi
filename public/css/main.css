@@ -18,16 +18,41 @@ a:hover, a:active {
 
 header {
   width: 100%;  
-  height: 60px;
-  padding: 10px;
-}
+  height: 35px;
+  padding: 16px 20px 24px 20px;
+  
+  background: #f1f1f1;
+  background: -webkit-gradient(radial,100 36,0,100 -40,120,from(#fafafa),to(#f1f1f1)),#f1f1f1;
+  border-bottom: 1px solid #666;
+  border-color: #e5e5e5;
+  position: absolute;
+  top: 0px;
+  z-index: 1;
 
-header h1, #last-tweet, #last-tweet p {
-  display: inline;
+  -webkit-box-shadow:  0px 1px 3px 2px rgba(0, 0, 0, 0.15);
+          box-shadow:  0px 1px 3px 2px rgba(0, 0, 0, 0.15);  
 }
 
 header h1 {
+  font-family: 'Satisfy', cursive;
+  font-size: 50px;
+  letter-spacing: -2px;    
   padding-right: 20px;
+}
+
+header h1, #last-tweet {
+  display: inline;
+}
+
+#last-tweet p {
+  display: inline-block;
+}
+
+#last-tweet .tweet-text {
+  margin: 0;
+  padding: 0;
+  width: 500px;
+  height: 35px;
 }
 
 #last-tweet details {
@@ -37,6 +62,6 @@ header h1 {
 #map_canvas { 
   width: 100%;  
   position: absolute;  
-  top: 60px;
+  top: 75px;
   bottom: 0;
 }
