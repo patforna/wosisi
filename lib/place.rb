@@ -2,7 +2,8 @@ require 'json'
 require 'twitter'
 
 class Place
-  LAT_LONG_PATTERN = /(^|(.* ))(-?\d+\.\d+),(-?\d+\.\d+)( .*|$)/
+  LAT_LONG_PATTERN = / ?(-?\d+\.\d+),(-?\d+\.\d+)/
+  TWEET_WITH_LAT_LONG_PATTERN = /(^|(.* ))#{LAT_LONG_PATTERN}( .*|$)/  
   UNKNOWN = "Not sure the name of the place"
   
   attr_reader :latitude, :longitude, :visited_at, :tweet
@@ -11,7 +12,7 @@ class Place
     if tweet.geo
       Place.new(tweet.geo.latitude, tweet.geo.longitude, tweet.created_at, tweet)
     else
-      tweet.text =~ LAT_LONG_PATTERN
+      tweet.text =~ TWEET_WITH_LAT_LONG_PATTERN
       Place.new($3, $4, tweet.created_at, tweet)
     end    
   end    

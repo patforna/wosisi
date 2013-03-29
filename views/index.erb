@@ -2,7 +2,7 @@
   <header>
     <h1>Wo si si?</h1>
   	<section id="last-tweet">
-        <p class="tweet-text"><%= auto_link(@last_tweet.text) %></p>
+        <p class="tweet-text"><%= auto_link(sanitize(@last_tweet.text)) %></p>
         <div class="tweet-details">
           <%if (!@last_place.unknown?) %>
           <p class="tweet-location"><i class="icon-map-marker"></i> <%= @last_place.name %></p>

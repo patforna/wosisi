@@ -8,4 +8,9 @@ module Helpers
   def ago_in_words(time)
      time.ago_in_words
   end
+  
+  def sanitize(string)
+    string.gsub(Place::LAT_LONG_PATTERN, "")
+  end
+  
 end

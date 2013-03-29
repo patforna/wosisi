@@ -60,7 +60,8 @@ header #last-tweet {
 }
 
 #last-tweet .more-tweets {
-  float: left;
+  float: right;
+  margin-right: 10px;  
 }
 
 .more-tweets a:link, a:visited {
