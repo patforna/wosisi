@@ -1,5 +1,6 @@
 require 'json'
 require 'twitter'
+require 'geocoder'
 
 class Place
   LAT_LONG_PATTERN = / ?(-?\d+\.\d+), ?(-?\d+\.\d+)/
@@ -43,10 +44,16 @@ class Place
   private
   def compute_name
     begin
-      result = Twitter.reverse_geocode(:lat => latitude, :long => longitude, :granularity => "city", :max_results => 1).first
-      parts = [result.full_name]
-      parts << result.country if result.country?
+      address = Geocoder.search("#{latitude},#{longitude}").first.formatted_address
+      parts = address.split(', ')
+      parts = parts.drop parts.length - 2 if parts.length > 2
+      parts = parts.map {|p| p.gsub(/\s?\d+\s?/, '') }
       parts.join(', ')
+
+      #result = Twitter.reverse_geocode(:lat => latitude, :long => longitude, :granularity => "city", :max_results => 1).first
+      #parts = [result.full_name]
+      #parts << result.country if result.country?
+      #parts.join(', ')
     rescue
       UNKNOWN
     end

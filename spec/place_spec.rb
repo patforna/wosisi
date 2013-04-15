@@ -50,43 +50,43 @@ describe Place do
   
   pending "compute name of place" do
     it "should use Google API to reverse geocode latitude and longitude" do
-      latitude, longitude = 40, 10
-      geoLoc = double('geoLoc')
-      geoLoc.should_receive(:full_address).and_return("Foo, Bar")      
-      Geokit::Geocoders::GoogleGeocoder.should_receive(:reverse_geocode).with(Geokit::LatLng.new(latitude, longitude)).and_return(geoLoc)
+      latitude, longitude = 40.0, 10.0
+      geoLoc = [double('geoLoc')]
+      geoLoc.should_receive(:formatted_address).and_return("Foo, Bar")      
+      Geocoder.should_receive(:search).with("#{latitude},#{longitude}").and_return(geoLoc)
       Place.new(latitude, longitude).name.should == "Foo, Bar"
     end
     
     it "should limit to last two address components if there are more" do
-      geoLoc = double('geoLoc')
-      geoLoc.should_receive(:full_address).and_return("Foo, Bar, Baz")      
-      Geokit::Geocoders::GoogleGeocoder.should_receive(:reverse_geocode).and_return(geoLoc)
+      geoLoc = [double('geoLoc')]
+      geoLoc.should_receive(:formatted_address).and_return("Foo, Bar, Baz")      
+      Geocoder.should_receive(:search).and_return(geoLoc)
       Place.new(0, 0).name.should == "Bar, Baz"
     end    
     
     it "should get rid of numbers in address components - at beginning" do
-      geoLoc = double('geoLoc')
-      geoLoc.should_receive(:full_address).and_return("Foo, Bar 11234, Baz")      
-      Geokit::Geocoders::GoogleGeocoder.should_receive(:reverse_geocode).and_return(geoLoc)
+      geoLoc = [double('geoLoc')]
+      geoLoc.should_receive(:formatted_address).and_return("Foo, Bar 11234, Baz")      
+      Geocoder.should_receive(:search).and_return(geoLoc)
       Place.new(0, 0).name.should == "Bar, Baz"
     end    
   
     it "should get rid of numbers in address components - at end" do
-      geoLoc = double('geoLoc')
-      geoLoc.should_receive(:full_address).and_return("11234 Bar, Baz")      
-      Geokit::Geocoders::GoogleGeocoder.should_receive(:reverse_geocode).and_return(geoLoc)
+      geoLoc = [double('geoLoc')]
+      geoLoc.should_receive(:formatted_address).and_return("11234 Bar, Baz")      
+      Geocoder.should_receive(:search).and_return(geoLoc)
       Place.new(0, 0).name.should == "Bar, Baz"
     end        
     
     it "should use cache response computed on reverse geocoding" do
-      Geokit::Geocoders::GoogleGeocoder.should_receive(:reverse_geocode)
+      Geocoder.should_receive(:search)
       place = Place.new
       place.name
       place.name
     end    
     
     it "should fall back to sensible message when things go haywire" do
-      Geokit::Geocoders::GoogleGeocoder.should_receive(:reverse_geocode).and_raise(:boom)
+      Geocoder.should_receive(:search)
       Place.new(0, 0).name.should == "Not sure the name of the place"
     end    
   end
