@@ -48,6 +48,7 @@ class Place
       parts = address.split(', ')
       parts = parts.drop parts.length - 2 if parts.length > 2
       parts = parts.map {|p| p.gsub(/\s?\d+\s?/, '') }
+      parts.reject!(&:empty?)
       parts.join(', ')
     rescue
       UNKNOWN
