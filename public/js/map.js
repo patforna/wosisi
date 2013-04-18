@@ -78,10 +78,14 @@ whereispat.map = function() {
     function showApproximateRoute(tweetedRoute) {
         var probableRoute = [];
         $.each(tweetedRoute.places, function() {
-            if (Date.parse(this.visited_at) >= Date.parse(ROUTE_START_DATE)) {
+                    
+                                    console.log('x: ' + Date.parse(this.visited_at) + " sd: " + ROUTE_START_DATE);
+            if (parseDate(this.visited_at) >= parseDatesafa(ROUTE_START_DATE)) {
               probableRoute.push(new google.maps.LatLng(this.latitude, this.longitude));
             }
         });
+        
+                console.log('probable route: ' + probableRoute.length);
 
         new google.maps.Polyline({
             map: map,
@@ -98,6 +102,19 @@ whereispat.map = function() {
         $.each(tweetedRoute.places, function() { bounds.extend(new google.maps.LatLng(this.latitude, this.longitude)); });
         map.fitBounds(bounds);
     };
+    
+    function parseDate(s) {
+      var day= s.slice(0,-5).split(/\D/).map(function(itm){
+        return parseInt(itm, 10) || 0;
+      });
+      day[1]-= 1;
+      day= new Date(Date.UTC.apply(Date, day));  
+      var offsetString = s.slice(-5)
+      var offset = parseInt(offsetString,10)/100;
+      if (offsetString.slice(0,1)=="+") offset*=-1;
+      day.setHours(day.getHours()+offset);
+      return day.getTime();
+    }
 
     return instance;
 };
