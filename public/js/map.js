@@ -80,7 +80,7 @@ whereispat.map = function() {
         $.each(tweetedRoute.places, function() {
                     
                                     console.log('x: ' + Date.parse(this.visited_at) + " sd: " + ROUTE_START_DATE);
-            if (parseDate(this.visited_at) >= parseDatesafa(ROUTE_START_DATE)) {
+            if (parseDate(this.visited_at) >= parseDate(ROUTE_START_DATE)) {
               probableRoute.push(new google.maps.LatLng(this.latitude, this.longitude));
             }
         });
