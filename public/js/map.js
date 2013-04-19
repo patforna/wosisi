@@ -85,8 +85,6 @@ whereispat.map = function() {
             }
         });
         
-                console.log('probable route: ' + probableRoute.length);
-
         new google.maps.Polyline({
             map: map,
             path: probableRoute,
